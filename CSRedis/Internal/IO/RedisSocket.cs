@@ -64,14 +64,13 @@ namespace CSRedis.Internal.IO
 
         public void Dispose()
         {
-            _socket.Dispose();
+            _socket?.Dispose();
+            _socket = null;
         }
 
         void InitSocket(EndPoint endpoint)
         {
-            if (_socket != null)
-                _socket.Dispose();
-
+            _socket?.Dispose();
             _socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             _remote = endpoint;
         }

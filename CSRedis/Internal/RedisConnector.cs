@@ -201,8 +201,8 @@ namespace CSRedis.Internal
         void OnConnected()
         {
             _io.SetStream(_redisSocket.GetStream());
-            if (Connected != null)
-                Connected(this, new EventArgs());
+            
+            Connected?.Invoke(this, new EventArgs());
         }
 
         void OnAsyncConnected(object sender, EventArgs args)
